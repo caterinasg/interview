@@ -1,15 +1,22 @@
 package com.meldinh.recreatedi.controller.external;
 
-import com.meldinh.recreatedi.cache.TableInjector;
+import com.meldinh.recreatedi.factory.TableInjector;
 import com.meldinh.recreatedi.controller.exception.RecreateDIException;
 import com.meldinh.recreatedi.persistence.service.TableService;
 
 public class TableController {
 
-    static TableService service;
+    public TableService service;
 
-    static {
-        service = (TableService) TableInjector.getInstance().getData(TableService.class);
+    public TableController() {
+    }
+
+    public TableController(TableService tableService) {
+        this.service = tableService;
+    }
+
+    public void setService(TableService service) {
+        this.service = service;
     }
 
     /**
